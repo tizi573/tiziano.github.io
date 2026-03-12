@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:black;
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
+margin:0;
+font-family:Arial;
+}
+
+#gato{
+width:300px;
+cursor:pointer;
+transition:transform 0.1s;
+}
+
+#gato:active{
+transform:scaleY(0.8);
+}
+
+#contador{
+font-size:30px;
+margin-top:20px;
+}
+
+#pelea{
+display:none;
+margin-top:20px;
+text-align:center;
+}
+
+#pelea img{
+width:150px;
+margin:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<img id="gato" src="gato.jpg">
+
+<div id="contador">
+Caricias: 0
+</div>
+
+<div id="pelea">
+
+<h2>🐱 CLUB DE PELEA 🥊</h2>
+
+<img src="gato1.jpg">
+<img src="gato2.jpg">
+
+</div>
+
+<audio id="meow" src="meow.mp3"></audio>
+<audio id="peleaAudio" src="pelea.mp3"></audio>
+
+<script>
+
+let contador = 0
+
+let gato = document.getElementById("gato")
+let sonido = document.getElementById("meow")
+let pelea = document.getElementById("pelea")
+let peleaAudio = document.getElementById("peleaAudio")
+let contadorTexto = document.getElementById("contador")
+
+gato.onclick = function(){
+
+contador++
+
+contadorTexto.innerText = "Caricias: " + contador
+
+sonido.currentTime = 0
+sonido.play()
+
+if(contador % 100 === 0){
+
+pelea.style.display = "block"
+peleaAudio.currentTime = 0
+peleaAudio.play()
+
+setTimeout(() => {
+
+pelea.style.display = "none"
+
+},5000)
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
