@@ -37,12 +37,42 @@ margin-top:20px;
 #pelea{
 display:none;
 margin-top:20px;
-text-align:center;
+position:relative;
+width:400px;
+height:200px;
 }
 
-#pelea img{
-width:150px;
-margin:10px;
+.gatoPelea{
+width:120px;
+position:absolute;
+}
+
+/* Animaciones */
+
+#gatoA{
+left:0;
+animation:peleaA 0.5s infinite;
+}
+
+#gatoB{
+right:0;
+animation:peleaB 0.5s infinite;
+}
+
+@keyframes peleaA{
+
+0%{left:0; transform:rotate(0deg);}
+50%{left:150px; transform:rotate(-10deg);}
+100%{left:0; transform:rotate(0deg);}
+
+}
+
+@keyframes peleaB{
+
+0%{right:0; transform:rotate(0deg);}
+50%{right:150px; transform:rotate(10deg);}
+100%{right:0; transform:rotate(0deg);}
+
 }
 
 </style>
@@ -61,11 +91,11 @@ Caricias: 0
 
 <h2>🐱 CLUB DE PELEA 🥊</h2>
 
-<img src="gato1.jpg">
-<img src="gato2.jpg">
+<img id="gatoA" class="gatoPelea" src="gato1.jpg">
+<img id="gatoB" class="gatoPelea" src="gato2.jpg">
 
 </div>
-  
+
 <audio id="meow" src="meow.mp3"></audio>
 <audio id="peleaAudio" src="pelea.mp3"></audio>
 
@@ -91,6 +121,7 @@ sonido.play()
 if(contador % 100 === 0){
 
 pelea.style.display = "block"
+
 peleaAudio.currentTime = 0
 peleaAudio.play()
 
@@ -98,7 +129,7 @@ setTimeout(() => {
 
 pelea.style.display = "none"
 
-},5000)
+},60000)  // 1 minuto
 
 }
 
